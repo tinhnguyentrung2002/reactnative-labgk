@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516535919857",
+    "project_id": "labgk-16599",
+    "storage_bucket": "labgk-16599.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516535919857:android:8842b79dab9c18d7b9f550",
+        "android_client_info": {
+          "package_name": "com.lab.LabGK"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzRnlwaNwGRZbktf4MWozjB0CIMcrGL54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,31 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './screens/Login';
+import Register from './screens/Register';
+import React from 'react';
+import { MyContextControllerProvider } from './store/Index';
+import Home from './screens/Home';
 
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MyContextControllerProvider>
+      <StatusBar style="light" />
+        <NavigationContainer>
+          <Stack.Navigator
+             initialRouteName="Login"
+             screenOptions={{
+              headerStyle: { backgroundColor: 'royalblue' },
+              headerTintColor: 'white', 
+            }}
+             >
+            <Stack.Screen name="Login" component={Login} options={{headerTitle: 'Đăng nhập', headerTitleAlign: 'center'}}/>
+            <Stack.Screen name="Home" component={Home} options={{headerTitle: 'Trang chủ', headerTitleAlign: 'left'}} />
+            <Stack.Screen name="Register" component={Register} options={{headerTitle: 'Đăng ký', headerTitleAlign: 'center'}} />
+          </Stack.Navigator>
+        </NavigationContainer>
+    </MyContextControllerProvider>
+        
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -9,35 +9,20 @@ export default function Home({navigation}) {
   const[loading, setLoading] = React.useState(true)
   const[activities,setActivities] = React.useState([])
   const[activity,setActivity] = React.useState('')
-  const[fullName,setFullName] = React.useState('')
   const ref = firestore().collection('Jobs')
   const [controller, dispatch] = useMyContextProvider();
-
-  useEffect(() => {
-      const currentUser = auth().currentUser;
-      if (currentUser) {
-        firestore().collection('USERS').doc(currentUser.uid).get()
-          .then((doc) => {
-            if (doc.exists) {
-              setFullName(doc.data().fullName);
-            } else {
-              console.log('Lỗi');
-            }
-          })
-          .catch((e) => {});
-      }
-    }, []);
+  const {userLogin} = controller
     React.useLayoutEffect(() => {
       navigation.setOptions({
         headerLeft: null,
         headerRight: () => (
           <View style={{ flexDirection: 'row', alignItems: 'center', marginRight:10 }}>
-            <Text style={{ marginRight: 2, fontStyle:'italic', fontWeight:'bold', color:'white' }}>{fullName}</Text>
+            <Text style={{ marginRight: 2, fontStyle:'italic', fontWeight:'bold', color:'white' }}>{(userLogin!=null?userLogin.fullName:"error")}</Text>
             <Text style={{color:'white'}} onPress={() =>  logout(dispatch, navigation)}>, thoát</Text>
           </View> 
         ),
       });
-    }, [navigation, fullName]);
+    }, [navigation, userLogin]);
     async function addActivity(){
       if(activity != '')
       {

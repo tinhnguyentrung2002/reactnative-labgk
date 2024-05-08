@@ -61,8 +61,8 @@ const login = (dispatch, email, password, navigation) =>{
           .onSnapshot(u=>{
                if(u.exists){
                     console.log("Đăng nhập thành công với: " + u.id)
-                    navigation.navigate('Home')
                     dispatch({type: "USER_LOGIN", value: u.data()})
+                    navigation.navigate('Home')
                }
           })
      })

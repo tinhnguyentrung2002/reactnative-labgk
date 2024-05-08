@@ -12,7 +12,7 @@ const Login = ({ navigation, route}) => {
 
     useEffect(() => {
       if (route.params && route.params.email) {
-        setUserName(route.params.email);
+        setUserName(route.params.email)
         console.log(route.params.email)
       }
     }, [route.params]);
